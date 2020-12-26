@@ -1,6 +1,8 @@
 syntax = "proto3";
 package single_crawler;
 
+option go_package = ".;single_crawler";
+
 service SingleCrawler {
   rpc SingleCrawler(CrawlerReq) returns (CrawlerResp);
 }

@@ -4,7 +4,7 @@ use single_crawler_rpc::{CrawlerReq, CrawlerResp};
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let mut client = SingleCrawlerClient::connect("http://127.0.0.1:8086").await?;
+    let mut client = SingleCrawlerClient::connect("http://127.0.0.1:8081").await?;
 
     println!("client: {:?}", client);
 
