@@ -16,6 +16,12 @@ reqwest = { version = "0.10.10", features = ["json"] }
 [build-dependencies]
 tonic-build = "0.3"
 
+[profile.release]
+opt-level = 3
+codegen-units = 1
+panic = 'abort'
+lto = true
+
 [[bin]]
 name = "client"
 path = "src/client.rs"
