@@ -1,0 +1,15 @@
+syntax = "proto3";
+package single_crawler;
+
+service SingleCrawler {
+  rpc SingleCrawler(CrawlerReq) returns (CrawlerResp);
+}
+
+message CrawlerReq {
+  string url = 1;
+}
+
+message CrawlerResp {
+  bytes body = 1;
+  uint32 http_code = 2;
+}
