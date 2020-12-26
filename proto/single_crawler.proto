@@ -7,6 +7,7 @@ service SingleCrawler {
 
 message CrawlerReq {
   string url = 1;
+  uint64 timeout = 2;
 }
 
 message CrawlerResp {

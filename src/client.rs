@@ -10,6 +10,7 @@ async fn main() -> Result<()> {
 
     let request = Request::new(CrawlerReq {
         url: "http://www.baidu.com".to_string(),
+        timeout: 600,
     });
 
     let response = client.single_crawler(request).await?;
