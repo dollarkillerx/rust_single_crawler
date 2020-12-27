@@ -17,9 +17,10 @@ impl SingleCrawler for SingleCrawlerService {
         let r = client.
             get(&req.url).
             header("User-Agent", reptile_user_agent()).
+            header("Connection", "close").
             timeout(Duration::from_millis(req.timeout)).
-            send().await.map_err(|err| { Status::new(Code::Ok, format!("{:?}", err)) })?.
-            bytes().await.map_err(|err| { Status::new(Code::Ok, format!("{:?}", err)) })?;
+            send().await.map_err(|err| { Status::new(Code::Internal, format!("{:?}", err)) })?.
+            bytes().await.map_err(|err| { Status::new(Code::Internal, format!("{:?}", err)) })?;
 
         let response = CrawlerResp {
             body: r.to_vec(),
@@ -111,5 +112,5 @@ const UALIST: [&str; 58] = [
 
 fn reptile_user_agent() -> &'static str {
     let mut rng = rand::thread_rng();
-    UALIST[rng.gen_range(0,UALIST.len())]
+    UALIST[rng.gen_range(0, UALIST.len())]
 }
